@@ -32,23 +32,18 @@ class Application(tk.Frame):
     def create_widgets(self):
         self.methods = ("RGB to YIQ","YIQ to RGB")
 
-        self.quit = tk.Button(window, text="Salir", fg="red", command=window.destroy)
+        #self.quit = tk.Button(window, text="Salir", fg="red", command=window.destroy)
         #self.quit.place(x=450, y=500, width=100, height=30)
         #self.quit.grid(column=0, row=1)
         
         self.label_open= tk.Label(window, text="Seleccione un Archivo: ")
-        #self.label_open.place(x=10,y=10, width=200, height=30)
         self.label_open.grid(column=0, row=2, padx=(50,50), pady=(10,10))
         
         self.plot_button = tk.Button(window, command = self.open_file, height = 2, width = 15, text = "Abrir Imagen")
-        #self.plot_button.place(x=220, y=10, width=100, height=30)
         self.plot_button.grid(column=1, row=2,  pady=(10,10))
-        #self.plot_button.pack()
         
-
 
     def change_space(self, event=None):
-        
         space = self.combo.get()
         try:
             print("Metodo elegido ", space)
@@ -65,7 +60,7 @@ class Application(tk.Frame):
         
         
     def open_file(self):
-        archivo = filedialog.askopenfilename(title="abrir", initialdir="C:/Users/Ema Talavera/Desktop/UNJu-2022/IPDI/Clase 1", filetypes = (("Archivos png", "*.png"), ("Todos lod archivos", "*.*")))
+        archivo = filedialog.askopenfilename(title="abrir", initialdir="C:/", filetypes = (("Archivos png", "*.png"), ("Archivos jpg", "*.jpg"), ("Archivos bmp", "*.bmp"), ("Todos lod archivos", "*.*")))
         if archivo:
             rgb = imageio.imread(archivo)/255.
             
@@ -118,9 +113,6 @@ class Application(tk.Frame):
         # toolbar = NavigationToolbar2Tk(canvas, window) 
         # toolbar.update() 
         # canvas.get_tk_widget().pack()
-    
-    # def clean_plot():
-    #     print('limpiar')
     
     def rgb_to_yiq(self):
         w = self.file.shape[0]
